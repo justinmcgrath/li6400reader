@@ -6,7 +6,7 @@ Create data frames from a LI-6400 files.
 photosynthetic_data = read_6400('2017-01-01 field measurements')
 ```
 
-### View the rem#arks.
+### View the remarks.
 ```r
 attributes(photosynthetic_data)$remarks
 ```
@@ -14,5 +14,11 @@ attributes(photosynthetic_data)$remarks
 ### View the serial number (the XML package is required).
 ```r
 attributes(photosynthetic_data)$li6400$factory$unit
+```
+
+## Installation
+Download this package from GitHub. Unzip the the file and run the command below from the command line. The default file name when downloading from GitHub is shown.
+```
+R CMD INSTALL li6400reader-master
 ```
 
