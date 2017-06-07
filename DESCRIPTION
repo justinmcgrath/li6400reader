@@ -5,6 +5,7 @@ Description: Reads data files from the LI-6400 including remarks and file inform
 Author: Justin McGrath <jmcgrath@illinois.edu>
 Maintainer: Justin McGrath <jmcgrath@illinois.edu>
 Suggests: XML
-License: GPL-2 | file LICENSE
+License: GPL-2
 LazyData: true
+ByteCompile: TRUE
 

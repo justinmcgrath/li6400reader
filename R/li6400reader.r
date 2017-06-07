@@ -2,7 +2,6 @@ read_6400 = function(file_string) {
     filecon = file(file_string)
     on.exit(close(filecon))
     file_lines = readLines(filecon)
-    date = sub('\\"[^ ]+ (([^ ]+ ){3}).*', '\\1',  file_lines[2], perl=TRUE)  # The date is always on the second line and has the same format.
 
     start_of_data = grep('\\$STARTOFDATA\\$', file_lines)
     
@@ -26,6 +25,7 @@ read_6400 = function(file_string) {
         attributes(result)[[name]] = file_info[[name]]
     }
 
+    date = sub('\\"[^ ]+ (([^ ]+ ){3}).*', '\\1',  file_lines[2], perl=TRUE)  # The date is always on the second line and has the same format.
     attributes(result)$file_creation_date = as.character(as.Date(as.POSIXlt(date, format='%b %d %Y')))
     attributes(result)$remarks = remarks
     class(result) = c(class(result), 'li6400_data')
