@@ -1,0 +1,20 @@
+# In case user doesn't have autocrtl set:
+* text=auto
+
+
+# Basic .gitattributes for a R repo.
+# ==================================
+*.rda       binary
+*.rdb       binary
+*.rds       binary
+*.Rd        text
+*.Rdx       binary
+*.Rmd		text
+*.R  		text
+*.RData     binary
+*.Rnw       text
+
+
+# Other
+# =====
+*.pdf       binary
