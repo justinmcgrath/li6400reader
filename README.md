@@ -1,5 +1,5 @@
 # li6400reader
-Create data frames from a LI-6400 files.
+Create data frames from LI-6400 files.
 
 ## Example usage
 ```r
