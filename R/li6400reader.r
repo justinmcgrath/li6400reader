@@ -29,7 +29,7 @@ read_6400.connection = function(connection, ...) {
         attributes(result)[[name]] = file_info[[name]]
     }
 
-    date = sub('\\"[^ ]+ (([^ ]+ ){3}).*', '\\1',  file_lines[2], perl=TRUE)  # The date is always on the second line and has the same format.
+    date = sub('\\"[^ ]+ (([^ ]+ +){3}).*', '\\1',  file_lines[2], perl=TRUE)  # The date is always on the second line and has the same format.
     attributes(result)$file_creation_date = as.character(as.Date(as.POSIXlt(date, format='%b %d %Y')))
     attributes(result)$remarks = remarks
     class(result) = c(class(result), 'li6400_data')
