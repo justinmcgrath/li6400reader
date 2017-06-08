@@ -32,6 +32,10 @@ attributes(photosynthetic_data)$li6400$factory$unit
 url_connection = 'https://your_file_online'
 photosynthetic_data = read_6400(url_connection)
 close(url_connection)
+
+# Note that many connections can be infered from the file_path, so there is no need to create them first.
+# Thus, the following works too.
+photosynthetic_data = read_6400('https://your_file_online')
 }
 }
 
