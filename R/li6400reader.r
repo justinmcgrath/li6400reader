@@ -1,7 +1,9 @@
-read_6400 = function(file_string) {
-    filecon = file(file_string)
-    on.exit(close(filecon))
-    file_lines = readLines(filecon)
+read_6400 = function(x, ...) {
+    UseMethod("read_6400", x)
+}
+
+read_6400.connection = function(connection) {
+    file_lines = readLines(connection)
 
     start_of_data = grep('\\$STARTOFDATA\\$', file_lines)
     
@@ -30,6 +32,12 @@ read_6400 = function(file_string) {
     attributes(result)$remarks = remarks
     class(result) = c(class(result), 'li6400_data')
     return(result)
+}
+
+read_6400.character = function(file_path) {
+    file_connection = file(file_path)
+    on.exit(close(file_connection))
+    return(read_6400.connection(file_connection))
 }
 
 parse_file_info = function(xmllines) {

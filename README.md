@@ -10,6 +10,11 @@ attributes(photosynthetic_data)$remarks
 
 # View the serial number (the XML package is required).
 attributes(photosynthetic_data)$li6400$factory$unit
+
+# Read a file from a URL.
+url_connection = 'https://your_file_online'
+photosynthetic_data = read_6400(url_connection)
+close(url_connection)
 ```
 
 ## Installation

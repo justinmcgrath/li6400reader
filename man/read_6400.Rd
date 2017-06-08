@@ -3,9 +3,11 @@
 \title{Read LI-6400 files into data frames.}
 \usage{
 read_6400(file_path)
+read_6400(connection)
 }
 \arguments{
 \item{file_path}{The path to a file. (a characater vector)}
+\item{connection}{A file connection. See \code{help(\link{connections})}. (a connection)}
 }
 \value{
 A data frame with additional attributes based on the file that was read.
@@ -25,6 +27,11 @@ attributes(photosynthetic_data)$remarks
 
 # View the serial number (the XML package is required).
 attributes(photosynthetic_data)$li6400$factory$unit
+
+# Read a file from a URL.
+url_connection = 'https://your_file_online'
+photosynthetic_data = read_6400(url_connection)
+close(url_connection)
 }
 }
 

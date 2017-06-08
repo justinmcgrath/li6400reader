@@ -1,2 +1,4 @@
 export(read_6400)
+export(read_6400.character)
+export(read_6400.connection)
 
