@@ -11,9 +11,11 @@ read_6400.connection = function(connection, ...) {
         result = list()  #  There are no data, so insert an empty list.
     } else {
         start_of_data = start_of_data[1]  # Files sometimes have more than one line with "$STARTOFDATA$", so keep only the first instance.
-        headers = file_lines[start_of_data + 1]
-        observation_lines = file_lines[-seq_len(start_of_data)]  # Delete everything before "$STARTOFDATA$".
-        logged_line_indexes = grepl('(^[0-9]+	)', observation_lines)  # All of the lines with data begin with a number.
+        header_row_number = start_of_data + 1
+        headers = file_lines[header_row_number]
+        observation_lines = file_lines[-c(seq_len(start_of_data), header_row_number)]  # Delete everything before "$STARTOFDATA$" and the header row.
+        #logged_line_indexes = grepl('(^[0-9]+	)', observation_lines)  # All of the lines with data begin with a number.
+        logged_line_indexes = !grepl('^"[^"]* ', observation_lines, perl=TRUE)  # There's nothing certain to identify a remark. This looks for a quoted field at the start of the line with spaces in it.
         data_lines = c(headers, observation_lines[logged_line_indexes])  # Keep the headers and lines with data.
         remarks = gsub('"', "", observation_lines[!logged_line_indexes][-1])  # Keep remarks, but remove unnecessary quotation marks.
         result = read.delim(textConnection(data_lines), ...)
