@@ -1,8 +1,8 @@
 read_6400 = function(x, ...) {
-    UseMethod("read_6400", x)
+    UseMethod("read_6400")
 }
 
-read_6400.connection = function(connection) {
+read_6400.connection = function(connection, ...) {
     file_lines = readLines(connection)
 
     start_of_data = grep('\\$STARTOFDATA\\$', file_lines)
@@ -16,7 +16,7 @@ read_6400.connection = function(connection) {
         logged_line_indexes = grepl('(^[0-9]+	)', observation_lines)  # All of the lines with data begin with a number.
         data_lines = c(headers, observation_lines[logged_line_indexes])  # Keep the headers and lines with data.
         remarks = gsub('"', "", observation_lines[!logged_line_indexes][-1])  # Keep remarks, but remove unnecessary quotation marks.
-        result = read.delim(textConnection(data_lines))
+        result = read.delim(textConnection(data_lines), ...)
     }
 
     
@@ -34,10 +34,10 @@ read_6400.connection = function(connection) {
     return(result)
 }
 
-read_6400.character = function(file_path) {
+read_6400.character = function(file_path, ...) {
     file_connection = file(file_path)
     on.exit(close(file_connection))
-    return(read_6400.connection(file_connection))
+    return(read_6400.connection(file_connection, ...))
 }
 
 parse_file_info = function(xmllines) {
