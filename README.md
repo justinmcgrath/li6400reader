@@ -4,7 +4,7 @@ Create data frames from LI-6400 files.
 ## Example usage
 ```r
 library(li6400reader)
-photosynthetic_data = read_6400('2017-01-01 field measurements')
+photosynthetic_data = read_6400('2017-01-01 field measurements')[[1]]
 
 # View the remarks.
 attributes(photosynthetic_data)$remarks
@@ -13,7 +13,7 @@ attributes(photosynthetic_data)$remarks
 attributes(photosynthetic_data)$li6400$factory$unit
 
 # Read a file from a URL.
-photosynthetic_data = read_6400('https://your_file_online')
+photosynthetic_data = read_6400('https://your_file_online')[[1]]
 
 # Access the help file.
 ?read_6400
