@@ -12,7 +12,7 @@ read_6400.connection = function(connection, ...) {
 
     result = vector('list', length(sections))
     for (i in seq_along(sections)) {
-        result[[i]] = parse_section(sections[[i]])
+        result[[i]] = parse_section(sections[[i]], ...)
     }
     return(result)
 }

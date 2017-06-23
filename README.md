@@ -5,7 +5,8 @@ Create data frames from LI-6400 files.
 ```r
 library(li6400reader)
 photosynthetic_data = read_6400('2017-01-01 field measurements')[[1]]
-# A list of data frames is returned, with one item for each section of the 6400 file. If there is only one section, use "[[1]]" to access it.
+# A list of data frames is returned, with one item for each section of the 6400 file.
+# If there is only one section, use "[[1]]" to access it.
 
 # View the remarks.
 attributes(photosynthetic_data)$remarks
