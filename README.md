@@ -1,14 +1,14 @@
 # li6400reader
 Create data frames from LI-6400 files.
 
-LI-6400 files have sections, each section starting with a line like "OPEN 6.3.2". Each file may have multiple sections, and sections may have different attributes and columns, which means that sections in a file cannot necessarily be entered into a single data frame. To properly handle this, `read_6400` creates a list of data frames, one data frame for each section. For uniformity, even if a file contains only one section, a list (with exactly one data frame) is returned.
+LI-6400 files have sections, each section starting with a line like "OPEN 6.3.2". Each file may have multiple sections. Since sections may have different attributes and columns, sections in a file cannot necessarily be entered into a single data frame. To handle this, `read_6400` creates a list of data frames, one data frame for each section. For uniformity, even if a file contains only one section, a list (with exactly one data frame) is returned.
 
 ## Example usage
 ```r
 library(li6400reader)
 photosynthetic_data = read_6400('2017-01-01 field measurements')[[1]]
-# A list of data frames is returned, with one item for each section of the 6400 file.
-# If there is only one section, use "[[1]]" to access it.
+# A list of data frames is returned, with one item for each section of the LI-6400 file.
+# If a file contains only one section, use "[[1]]" to access it.
 
 # View the data.
 head(photosynthetic_data$Photo)

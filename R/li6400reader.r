@@ -75,7 +75,7 @@ parse_section = function(section_lines, ...) {
     }
 
     date = sub('\\"[^ ]+ (([^ ]+ +){3}).*', '\\1',  section_lines[2], perl=TRUE)  # The date is always on the second line and has the same format.
-    attributes(result)$file_creation_date = as.character(as.Date(as.POSIXlt(date, format='%b %d %Y')))
+    attributes(result)$section_creation_date = as.character(as.Date(as.POSIXlt(date, format='%b %d %Y')))
     attributes(result)$remarks = remarks
     class(result) = c(class(result), 'li6400_data')
     return(result)
