@@ -31,7 +31,7 @@ parse_file_info = function(xmllines) {
         parsed_lines = XML::xmlToList(XML::xmlParse(c('<doc>', curated_lines, '</doc>')))  # XML files need a document-level tag. The parser doesn't care what the tag is, so I wrap everything in <doc></doc>.
 
         # The files repeat the top-level tags, but it makes more sense to have a hierachical structure. This groups subtags with the same top-level tag into a single group.
-        file_info = vector('list',length(unique(names(parsed_lines))))
+        file_info = vector('list', length(unique(names(parsed_lines))))
         names(file_info) = unique(names(parsed_lines)) 
         for (i in seq_along(parsed_lines)) {
             name = names(parsed_lines[i])

@@ -7,7 +7,7 @@ read_6400(connection)
 }
 \arguments{
 \item{file_path}{The path to a file. (a characater vector)}
-\item{connection}{A file connection. See \code{help(\link{connections})}. (a connection)}
+\item{connection}{A character string that gives the path to a file or a file connection. See \code{help(\link{connections})}. (a character string or connection)}
 }
 \value{
 A list of data frames. Each data frame has additional attributes based on the file that was read.
