@@ -2,3 +2,6 @@ export(read_6400)
 S3method(read_6400, character)
 S3method(read_6400, connection)
 
+export(read_6800)
+S3method(read_6800, character)
+S3method(read_6800, connection)
